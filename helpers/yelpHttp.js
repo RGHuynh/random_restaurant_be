@@ -4,6 +4,7 @@ const fetch = require('node-fetch')
 const YELP_HTTP =  "https://api.yelp.com/v3";
 const API_KEY = "Bearer " + process.env.YELP_API_KEY;
 const BUSINESS_SEARCH = "/businesses/search?";
+const BUSINESS_CONTENT = "/businesses/";
 const TERM = "term=restaurant";
 const RADIUS = "radius=30000";
 const LIMIT = "limit=6";
@@ -33,5 +34,11 @@ module.exports.getRestaurants = function() {
     })
     return restaurants;
   })
+}
+
+module.exports.getRestaurantPhotos = function() {
+  return fetch(YELP_HTTP + BUSINESS_CONTENT + "nU4XBdvxDABXqZ6CnB8Dig", params)
+  .then(res => res.json())
+  .then(data => data.photos) 
 }
 

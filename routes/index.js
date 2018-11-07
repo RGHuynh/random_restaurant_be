@@ -9,6 +9,6 @@ router.get('/', function(req, res, next) {
   YelpHTTP.getRestaurants().then(restaurantsDefault => {
     res.send(restaurantsDefault);
   })
-});
+})
 
 module.exports = router;
