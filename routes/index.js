@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var YelpHTTP = require('../helpers/yelpHttp');
+var cors = require('cors');
 
-/* GET home page. */
+router.use(cors())
+
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'yo' });
-});
+  YelpHTTP.getRestaurants().then(restaurantsDefault => {
+    res.send(restaurantsDefault);
+  })
+})
 
 module.exports = router;
